@@ -1,0 +1,13 @@
+{
+  "name": "proofly",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev -w proofly-server\" \"npm run dev -w proofly-client\"",
+    "start": "npm run start -w proofly-server",
+    "build": "npm run build -w proofly-client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
