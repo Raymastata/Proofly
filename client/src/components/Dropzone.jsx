@@ -57,11 +57,11 @@ export function Dropzone({ onFile, className = '' }) {
       onDragLeave={handleDragLeave}
     >
       <div className={`flex flex-col items-center justify-center ${dragActive ? 'animate-pulse' : ''}`}>
-        <ScanLine size={64} strokeWidth={2.2} className="text-cyan-400 drop-shadow-lg mb-2" />
-        <div className="mt-2 text-cyan-200 font-semibold text-lg select-none">
-          Magic Scan: Drop or Click to Upload
+        <ScanLine size={40} strokeWidth={1.8} className="text-cyan-400 drop-shadow-lg mb-3" />
+        <div className="mt-1 text-sm font-semibold text-slate-200 select-none tracking-tight">
+          Drop a document or click to upload
         </div>
-        <div className="text-xs text-slate-400 mt-1">PDF, PNG, JPG, or Screenshot</div>
+        <div className="text-xs text-slate-500 mt-1.5 font-mono">PNG · JPG · PDF · Screenshot</div>
       </div>
       <input
         ref={inputRef}

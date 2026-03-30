@@ -119,12 +119,12 @@ export function HomePage() {
         transition={{ duration: 0.35, ease: 'easeOut' }}
       >
         <h1
-          className="text-balance text-4xl sm:text-5xl font-heading tracking-tight text-white"
-          style={{ letterSpacing: '-0.02em' }}
+          className="text-balance text-4xl sm:text-5xl font-heading tracking-tighter bg-gradient-to-b from-white via-slate-200 to-slate-400/70 bg-clip-text text-transparent"
+          style={{ letterSpacing: '-0.03em' }}
         >
           Run a credibility check
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-slate-300 sm:text-lg">
+        <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-400 sm:text-lg">
           Paste text or upload an image—then analyze with Proofly.
         </p>
       </motion.section>
@@ -137,8 +137,8 @@ export function HomePage() {
         <form onSubmit={onAnalyze} className="flex flex-col gap-14">
           {/* Text input card */}
           <motion.div
-            className="flex flex-col h-full w-full rounded-[16px] bg-[rgba(15,23,42,0.6)] border border-white/10 p-8 shadow-[var(--shadow-glow)]"
-            whileHover={{ scale: 1.012 }}
+            className="flex flex-col h-full w-full rounded-[20px] bg-slate-950/50 border border-white/[0.08] p-8 shadow-[0_0_0_1px_rgba(148,163,184,0.06),0_24px_64px_rgba(2,6,23,0.7)] backdrop-blur-xl"
+            whileHover={{ scale: 1.008, boxShadow: '0 0 0 1px rgba(148,163,184,0.1), 0 24px 64px rgba(2,6,23,0.75)' }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
           >
             <label htmlFor="content" className="text-sm font-medium text-slate-200 mb-2">
@@ -160,23 +160,23 @@ export function HomePage() {
               <motion.button
                 type="submit"
                 disabled={!canSubmit}
-                className="relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 px-8 py-4 text-lg font-bold text-slate-950 shadow-xl shadow-cyan-500/20 transition focus:ring-4 focus:ring-cyan-400/30 disabled:cursor-not-allowed disabled:opacity-40"
-                whileHover={canSubmit ? { scale: 1.04, filter: 'brightness(1.1)' } : {}}
-                whileTap={canSubmit ? { scale: 0.97 } : {}}
+                className="relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-3xl bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 px-8 py-4 text-lg font-bold text-slate-950 shadow-[0_0_32px_rgba(139,92,246,0.25),0_0_12px_rgba(34,211,238,0.15)] transition focus:ring-4 focus:ring-violet-400/30 disabled:cursor-not-allowed disabled:opacity-40"
+                whileHover={canSubmit ? { scale: 1.03, filter: 'brightness(1.08)' } : {}}
+                whileTap={canSubmit ? { scale: 0.965 } : {}}
                 animate={
                   scanPhase === 'analyzing'
                     ? {
                         boxShadow: [
-                          '0 0 0px 0px rgba(34,211,238,0)',
-                          '0 0 22px 6px rgba(34,211,238,0.45)',
-                          '0 0 0px 0px rgba(34,211,238,0)',
+                          '0 0 12px 2px rgba(139,92,246,0.2), 0 0 4px 1px rgba(34,211,238,0.1)',
+                          '0 0 40px 10px rgba(139,92,246,0.45), 0 0 20px 4px rgba(34,211,238,0.3)',
+                          '0 0 12px 2px rgba(139,92,246,0.2), 0 0 4px 1px rgba(34,211,238,0.1)',
                         ],
                       }
-                    : { boxShadow: '0 0 0px 0px rgba(34,211,238,0)' }
+                    : { boxShadow: '0 0 32px rgba(139,92,246,0.25), 0 0 12px rgba(34,211,238,0.15)' }
                 }
                 transition={
                   scanPhase === 'analyzing'
-                    ? { duration: 1.1, repeat: Infinity, ease: 'easeInOut' }
+                    ? { duration: 1.3, repeat: Infinity, ease: 'easeInOut' }
                     : { duration: 0.25 }
                 }
               >
@@ -233,7 +233,7 @@ export function HomePage() {
 
           {/* Magic Scan card */}
           <motion.div
-            className="flex flex-col h-full w-full rounded-[16px] bg-[rgba(15,23,42,0.6)] border border-white/10 p-8 shadow-[var(--shadow-glow)] items-center justify-center"
+            className="flex flex-col h-full w-full rounded-[20px] bg-slate-950/50 border border-white/[0.08] p-8 shadow-[0_0_0_1px_rgba(148,163,184,0.06),0_24px_64px_rgba(2,6,23,0.7)] backdrop-blur-xl items-center justify-center"
             variants={fadeUp}
             transition={{ duration: 0.35, ease: 'easeOut' }}
             whileHover={!file ? { scale: 1.012 } : {}}

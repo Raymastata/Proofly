@@ -25,6 +25,8 @@ export function AppShell({ children }) {
           maskImage: 'radial-gradient(ellipse at top, black, transparent 70%)',
         }}
       />
+      <div aria-hidden className="spotlight pointer-events-none absolute inset-0" />
+      <div aria-hidden className="grain-texture pointer-events-none absolute inset-0 opacity-[0.032]" />
 
       <header className="relative z-10 border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
