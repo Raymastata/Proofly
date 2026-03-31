@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap');
 @import 'tailwindcss';
 
 /**
@@ -11,6 +11,10 @@
   --shadow-glow: 0 0 0 1px rgb(148 163 184 / 0.12), 0 20px 60px rgb(2 6 23 / 0.65);
   --color-bg: #020617;
   --color-text: #f8fafc;
+
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
 }
 
 html, body, #root {
@@ -27,8 +31,8 @@ html, body, #root {
 }
 .font-heading {
   font-family: var(--font-sans) !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.02em !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.03em !important;
 }
 .font-score {
   font-family: var(--font-mono) !important;
@@ -88,25 +92,11 @@ body,
   animation: page-fade-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-/* ── Animated grain / film-noise overlay ───────────────────────── */
-@keyframes grain {
-  0%, 100% { transform: translate(0,    0   ); }
-  10%       { transform: translate(-2%, -3%  ); }
-  20%       { transform: translate( 3%,  2%  ); }
-  30%       { transform: translate(-1%,  4%  ); }
-  40%       { transform: translate( 3%, -1%  ); }
-  50%       { transform: translate(-3%,  2%  ); }
-  60%       { transform: translate( 2%, -3%  ); }
-  70%       { transform: translate(-2%,  3%  ); }
-  80%       { transform: translate( 3%,  1%  ); }
-  90%       { transform: translate(-1%, -2%  ); }
-}
-
+/* ── Static grain / film-noise overlay (no animation) ───────────────────────── */
 .grain-texture {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 180px 180px;
-  animation: grain 8s steps(10, end) infinite;
 }
 
 /* ── Premium scrollbar ─────────────────────────────────────────── */
@@ -115,11 +105,53 @@ body,
 ::-webkit-scrollbar-thumb        { background: rgba(148,163,184,0.14); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover  { background: rgba(148,163,184,0.28); }
 
-/* ── Spotlight orb behind the fold ────────────────────────────── */
-.spotlight {
-  background: radial-gradient(
-    ellipse 80% 50% at 50% -10%,
-    rgb(99 102 241 / 0.08),
-    transparent
-  );
+
+/* ── Button idle glow: barely-there violet breath ─────────────── */
+@keyframes btn-idle-glow {
+  0%, 100% { box-shadow: 0 0 14px 0px rgba(139,92,246,0.14), 0 0 5px 0px rgba(34,211,238,0.07); }
+  50%       { box-shadow: 0 0 28px 5px rgba(139,92,246,0.28), 0 0 12px 2px rgba(34,211,238,0.14); }
 }
+
+.btn-idle-glow {
+  animation: btn-idle-glow 4.5s ease-in-out infinite;
+}
+
+/* ── Bioluminescent background blob drifts (≥20 s, imperceptible speed) ─── */
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  33%       { transform: translate(3.5%, 5%) scale(1.05); }
+  66%       { transform: translate(-2.5%, 2.5%) scale(0.97); }
+}
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  40%       { transform: translate(-4.5%, -3.5%) scale(1.04); }
+  80%       { transform: translate(2.5%, -2%) scale(0.98); }
+}
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50%       { transform: translate(2.5%, -4.5%) scale(1.04); }
+}
+
+.bg-blob-1 { animation: blob-drift-1 28s ease-in-out infinite; will-change: transform; }
+.bg-blob-2 { animation: blob-drift-2 34s ease-in-out infinite; will-change: transform; }
+.bg-blob-3 { animation: blob-drift-3 24s ease-in-out infinite; will-change: transform; }
+
+/* ── Icon hover and interaction animations ─────────────────────── */
+@keyframes icon-hover-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
+.icon-hover-scale {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-hover-scale:hover {
+  transform: scale(1.1);
+}
+
+.icon-interaction-pulse {
+  animation: icon-hover-pulse 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+

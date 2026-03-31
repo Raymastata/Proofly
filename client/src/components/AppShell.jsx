@@ -6,18 +6,26 @@ import { Link } from 'react-router-dom';
 export function AppShell({ children }) {
 
   return (
-    <div className="relative min-h-full overflow-hidden flex flex-col">
+    <div className="bg-[#050505] relative min-h-full overflow-hidden flex flex-col">
+      {/* Bioluminescent mesh gradient — three slow-drifting blobs, 24–34 s cycle */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="bg-blob-1 absolute rounded-full blur-[120px]"
+          style={{ background: '#0a0a2e', opacity: 0.65, width: '65vw', height: '65vw', top: '-18%', left: '-14%' }}
+        />
+        <div
+          className="bg-blob-2 absolute rounded-full blur-[120px]"
+          style={{ background: '#1a0b2e', opacity: 0.45, width: '58vw', height: '58vw', top: '12%', right: '-18%' }}
+        />
+        <div
+          className="bg-blob-3 absolute rounded-full blur-[120px]"
+          style={{ background: '#04040f', opacity: 0.6, width: '52vw', height: '52vw', bottom: '-14%', left: '16%' }}
+        />
+      </div>
+      {/* Subtle grid overlay */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 20% 0%, rgb(45 212 191 / 0.12), transparent 45%), radial-gradient(circle at 80% 10%, rgb(167 139 250 / 0.14), transparent 40%), radial-gradient(circle at 50% 120%, rgb(56 189 248 / 0.08), transparent 55%)',
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
             'linear-gradient(to right, rgb(148 163 184 / 0.25) 1px, transparent 1px), linear-gradient(to bottom, rgb(148 163 184 / 0.18) 1px, transparent 1px)',
@@ -25,8 +33,7 @@ export function AppShell({ children }) {
           maskImage: 'radial-gradient(ellipse at top, black, transparent 70%)',
         }}
       />
-      <div aria-hidden className="spotlight pointer-events-none absolute inset-0" />
-      <div aria-hidden className="grain-texture pointer-events-none absolute inset-0 opacity-[0.032]" />
+      <div aria-hidden className="grain-texture pointer-events-none absolute inset-0 opacity-[0.02]" />
 
       <header className="relative z-10 border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">

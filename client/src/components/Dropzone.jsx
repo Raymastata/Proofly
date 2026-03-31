@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Maximize2, ScanLine } from 'lucide-react';
 
 export function Dropzone({ onFile, className = '' }) {
   const inputRef = useRef();
   const [dragActive, setDragActive] = useState(false);
   const [scanning, setScanning] = useState(false);
+  const [iconPulse, setIconPulse] = useState(false);
 
   function handleDrop(e) {
     e.preventDefault();
@@ -24,6 +26,8 @@ export function Dropzone({ onFile, className = '' }) {
   function handleChange(e) {
     if (e.target.files && e.target.files[0]) {
       setScanning(true);
+      setIconPulse(true);
+      setTimeout(() => setIconPulse(false), 600);
       onFile(e.target.files[0]);
       setTimeout(() => setScanning(false), 1200);
     }
@@ -56,17 +60,24 @@ export function Dropzone({ onFile, className = '' }) {
       onDragEnter={handleDragOver}
       onDragLeave={handleDragLeave}
     >
-      <div className={`flex flex-col items-center justify-center ${dragActive ? 'animate-pulse' : ''}`}>
-        <ScanLine size={40} strokeWidth={1.8} className="text-cyan-400 drop-shadow-lg mb-3" />
+      <div className="flex flex-col items-center justify-center">
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+          animate={iconPulse ? { scale: [1, 1.08, 1] } : {}}
+          className="mb-3"
+        >
+          <ScanLine size={40} strokeWidth={1.8} className="text-cyan-400 drop-shadow-lg" />
+        </motion.div>
         <div className="mt-1 text-sm font-semibold text-slate-200 select-none tracking-tight">
-          Drop a document or click to upload
+          Upload Document
         </div>
-        <div className="text-xs text-slate-500 mt-1.5 font-mono">PNG · JPG · PDF · Screenshot</div>
+        <div className="text-xs text-slate-500 mt-1.5 font-medium">PNG · JPG · PDF · WebP</div>
       </div>
       <input
         ref={inputRef}
         type="file"
-        accept="image/*,application/pdf"
+        accept="image/*,application/pdf,.pdf"
         className="hidden"
         onChange={handleChange}
       />

@@ -31,12 +31,12 @@ export function ScoreBadge({ score }) {
         <div>
           <div className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">Human-writing estimate</div>
           <div className="mt-2 flex items-baseline gap-2">
-            <div className={`bg-gradient-to-br ${tone} bg-clip-text text-5xl font-score tracking-tight text-transparent`}>
+            <div className={`bg-gradient-to-br ${tone} bg-clip-text text-5xl font-black tracking-tight text-transparent`}>
               {safe}
             </div>
-            <div className="pb-2 text-lg text-slate-400 font-mono">/100</div>
+            <div className="pb-2 text-lg text-slate-400 font-medium">/100</div>
           </div>
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-mono font-medium text-slate-200 ring-1 ring-white/10">
+          <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-200 ring-1 ring-white/10">
             <span className={`size-1.5 rounded-full ${dotColor}`} />
             {label}
           </div>

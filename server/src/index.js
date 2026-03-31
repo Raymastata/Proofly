@@ -12,13 +12,10 @@ import dotenv from 'dotenv';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
-// --- 🛡️ API KEY CHECK ---
-console.log('--- 🛡️ API KEY CHECK ---');
-console.log('Hugging Face (text):', process.env.HUGGING_FACE_TOKEN ? '✅ YES' : '❌ NO');
-console.log('Hugging Face (image):', process.env.HUGGINGFACE_API_KEY ? '✅ YES' : '❌ NO');
-console.log('Mistral AI:', process.env.MISTRAL_API_KEY ? '✅ YES' : '❌ NO');
-console.log('Google Gemini:', process.env.GOOGLE_API_KEY ? '✅ YES' : '❌ NO');
-console.log('-----------------------');
+console.log('--- Proofly API Key Check ---');
+console.log('Mistral AI (OCR + Analysis):', process.env.MISTRAL_API_KEY ? '✅ Configured' : '❌ Missing — set MISTRAL_API_KEY in .env');
+console.log('Google Gemini (optional):', process.env.GOOGLE_API_KEY ? '✅ Configured' : '⚠️  Not set');
+console.log('-----------------------------');
 
 import express from 'express';
 import { analyzeRouter } from './routes/analyze.js';

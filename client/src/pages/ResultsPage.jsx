@@ -245,7 +245,7 @@ export function ResultsPage() {
       >
         <div>
           <div className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">Analysis</div>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-white font-mono">Content Authenticity Report</h1>
+          <h1 className="mt-2 text-3xl font-black tracking-tight text-white">Content Authenticity Report</h1>
           <p className="mt-2 max-w-2xl text-sm text-slate-400">
             Analysis uses deep-learning linguistic modeling to estimate human vs. synthetic probability. Accuracy may vary based on text length.
             "Real" %). Humanize uses Mistral. Estimates only—pair with context and judgment.
@@ -329,7 +329,7 @@ export function ResultsPage() {
             <div>
               <div className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">Source text</div>
               <div className="mt-2 text-sm text-slate-400">
-                When flagged, the full passage is highlighted as a <span className="font-mono">Linguistic Anomaly</span> (no phrase-level
+                When flagged, the full passage is highlighted as a <span className="font-medium">Linguistic Anomaly</span> (no phrase-level
                 attribution from the model).
               </div>
             </div>
